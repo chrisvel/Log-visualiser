@@ -1,6 +1,5 @@
-require 'csv'
-
 class HomeController < ApplicationController
+  require 'csv'
   
   # devise filter to authenticate user before calling controller
   before_filter :authenticate_user!

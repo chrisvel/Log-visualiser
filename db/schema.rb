@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605190317) do
+ActiveRecord::Schema.define(version: 20150605223208) do
+
+  create_table "log_events", force: :cascade do |t|
+    t.datetime "install_date",             null: false
+    t.integer  "status",       limit: 4,   null: false
+    t.string   "package_name", limit: 255, null: false
+    t.integer  "major_rel",    limit: 4,   null: false
+    t.string   "minor_rel",    limit: 255, null: false
+    t.string   "elxxx",        limit: 255, null: false
+    t.integer  "platform",     limit: 4,   null: false
+    t.integer  "user_id",      limit: 4,   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "log_events", ["user_id", "package_name", "install_date"], name: "index_log_events_on_user_id_and_package_name_and_install_date", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
