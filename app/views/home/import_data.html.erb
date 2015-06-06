@@ -1,13 +1,24 @@
-Your uploaded data:<br />
+Your uploaded data:<br /><br />
 
-<table class="table">
+<table class="table table-bordered">
+  <thead>
+    <th>Date</th>
+    <th>Status</th>
+    <th>Package name</th>
+    <th>Major release</th>
+    <th>Minor release</th>
+    <th>Platform</th>
+  </thead>
   <tbody>
     <% if !@lines.nil? %>
     <% @lines.each do |line| %>
     <tr>
-      <td><%= line[0] %> <%= line[1] %> <%= line[2]%></td>
+      <td><%= line[0] %> </td>
+      <td><%= line[1] %> </td>
+      <td><%= line[2] %> </td>
       <td><%= line[3] %> </td>
       <td><%= line[4] %> </td>
+      <td><%= line[5] %> </td>
      </tr> 
       <% end %>
     <% end %>
