@@ -4,6 +4,9 @@ class LogeventsController < ApplicationController
   
   def index
     @logevents = LogEvent.all
+    @logevents_datetime = @logevents.group_by(&:install_date)
+    @logevents_status = @logevents.group_by(&:status)
+    @logevents_pname = @logevents.group_by(&:package_name)
   end
 
   def new
