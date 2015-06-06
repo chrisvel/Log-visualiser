@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :logevents
+
   post 'import_data' => 'home#import_data'
 
   devise_for :users

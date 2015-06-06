@@ -1,5 +1,11 @@
 class LogEvent < ActiveRecord::Base
-  enum status:   [ :update, :install, :remove ]
-  enum platform: [ :noarch, :x86_64, :i686 ]
+  enum status:   [ :Updated, :Installed, :Removed ]
+  enum platform: [ :noarch, :x86_64, :i686, :unknown ]
+  
+  serialize :things
+  
+  # validations
+  
+  
   
 end

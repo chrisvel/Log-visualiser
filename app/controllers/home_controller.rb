@@ -15,7 +15,11 @@ class HomeController < ApplicationController
     if !params[:file].nil?
       # analyze file name
       @logfile_name = params[:file].original_filename
-      @logfile_date = Date.parse(@logfile_name.match(/^\w+.\w+-(.*)/)[1]).to_date.strftime('%b %d %Y')
+      if @logfile_name.match(/^\w+.\w+-(.*)/)
+        @logfile_date = Date.parse(@logfile_name.match(/^\w+.\w+-(.*)/)[1]).to_date.strftime('%b %d %Y')
+      else 
+        @logfile_date = ""
+      end
       
       # analyze file data
       logfile_path = params[:file].path
@@ -26,22 +30,50 @@ class HomeController < ApplicationController
         @install_date = DateTime.parse(@logdata[0] + " " + @logdata[1] + " " + @logdata[2]).to_datetime.strftime('%b %d %H:%M:%S')
         @status = @logdata[3].sub(/\:/, '')
         # slice the package name
-        regex = /^[\d:]*((?:\w+[\w\d]*-)+)(\d+)\.?([\d\.]*)(?:-(\d+)\.(\w+)\.?(\w+)?)*/
+        regex = /^[\d:]*((?:[a-z]+\w*-)+)(?:([\d\.]+)\.((?:\d+-\d+)(?:.*))\.(el[\w.]+)\.(.*)|(\d+)-(\d+)\.?(el[\w.]+)?\.(.*))/
         if @logdata[4].to_s.match(regex)
           @package_info =  @logdata[4].to_s.match(regex)
         
           @package_name = @package_info[1].gsub(/-/,' ')
-          @major_rel = @package_info[2]
-          @minor_rel = @package_info[3] 
-          @minor_rel += "-" + @package_info[4] if @package_info[4]
-          @platform = @package_info[6] if @package_info[6]
+          
+          if @package_info[2]
+            @major_rel = @package_info[2]
+          else
+            @major_rel = "-"
+          end
+      
+          if @package_info[3] 
+            @minor_rel = @package_info[3] 
+            #@minor_rel += "-" + @package_info[4] if @package_info[4]
+          else
+            @minor_rel = "-"
+          end
+          
+          if @package_info[5]
+            @platform = @package_info[5] 
+          else
+            @platform = "unknown"
+          end
 
           @lines << [@install_date, @status, @package_name, @major_rel, @minor_rel, @platform]
+          
+          logevent = Hash.new
+          
+          logevent = {
+            :install_date => @install_date,
+            :status => @status,
+            :package_name => @package_name,
+            :major_rel => @major_rel,
+            :minor_rel => @minor_rel,
+            :elxxx => "",
+            :platform => @platform,
+            :user_id => current_user.id
+            }
+          
+          LogEvent.new
+          LogEvent.create! logevent
         end
       end
     end
-    
-    
   end
-  
 end
