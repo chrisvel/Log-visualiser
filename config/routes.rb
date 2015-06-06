@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
   resources :logevents
+  get 'search' => 'logevents#search'
+  post 'search_results' => 'logevents#search_results'
 
   post 'import_data' => 'home#import_data'
 

@@ -3,7 +3,7 @@ class LogeventsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @logevents = LogEvent.all
+    @logevents = LogEvent.all.order(package_name: :asc)
     @logevents_datetime = @logevents.group_by(&:install_date)
     @logevents_status = @logevents.group_by(&:status)
     @logevents_pname = @logevents.group_by(&:package_name)
@@ -22,6 +22,23 @@ class LogeventsController < ApplicationController
     else
       render root_path
     end
+  end
+  
+  def search
+  end
+  
+  def search_results
+    @user = current_user
+    if params[:search_text].present?
+      @logevents = LogEvent.where("package_name LIKE ?", "%#{params[:search_text]}%").order(package_name: :asc)
+      
+    else
+      @logevents = LogEvent.all.order(package_name: :asc)
+    end
+      @logevents_pname = @logevents.group_by(&:package_name)
+  end
+
+  def visualise
   end
   
   private
