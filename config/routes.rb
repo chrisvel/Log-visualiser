@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  post 'import' => 'home#import'
+  post 'import_data' => 'home#import_data'
 
   devise_for :users
   root to: "home#index"

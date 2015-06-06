@@ -5,16 +5,17 @@ class HomeController < ApplicationController
   before_filter :authenticate_user!
   
   def index
+    
   end
   
-  def import
-    fileText = File.read(params[:file].path)
-    fileData = CSV.parse(fileText, headers: false)
-    fileData.each do |row|
-      puts row
+  def import_data
+    @lines = Array.new
+    if !params[:file].nil?
+      logfile_path = params[:file].path
+      File.foreach(logfile_path, headers: false) do |row|
+        @lines << row.to_s.split.to_a
+      end
     end
-
-    redirect_to root_path, notice: "Data imported."
   end
   
 end

@@ -1,0 +1,15 @@
+Your uploaded data:<br />
+
+<table class="table">
+  <tbody>
+    <% if !@lines.nil? %>
+    <% @lines.each do |line| %>
+    <tr>
+      <td><%= line[0] %> <%= line[1] %> <%= line[2]%></td>
+      <td><%= line[3] %> </td>
+      <td><%= line[4] %> </td>
+     </tr> 
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
