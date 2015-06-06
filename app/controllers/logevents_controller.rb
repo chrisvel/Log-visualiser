@@ -3,6 +3,7 @@ class LogeventsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
+    @logevents = LogEvent.all
   end
 
   def new

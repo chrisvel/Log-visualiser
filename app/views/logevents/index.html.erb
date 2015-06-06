@@ -1,2 +1,24 @@
-<h1>Logevents#index</h1>
-<p>Find me in app/views/logevents/index.html.erb</p>
+Your uploaded data at <b>TBD</b><br /><br />
+
+<table class="table table-bordered">
+  <thead>
+    <th>Date</th>
+    <th>Status</th>
+    <th>Package name</th>
+    <th>Major release</th>
+    <th>Minor release</th>
+    <th>Platform</th>
+  </thead>
+  <tbody>
+    <% @logevents.each do |logevent| %>
+      <tr>
+        <td><%= logevent.install_date %> </td>
+        <td><%= logevent.status %> </td>
+        <td><%= logevent.package_name %> </td>
+        <td><%= logevent.major_rel %> </td>
+        <td><%= logevent.minor_rel %> </td>
+        <td><%= logevent.platform %> </td>
+       </tr> 
+    <% end %>
+  </tbody>
+</table>
