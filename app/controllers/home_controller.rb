@@ -13,13 +13,17 @@ class HomeController < ApplicationController
     @package_info = Array.new
     
     if !params[:file].nil?
+      # analyze file name
+      @logfile_name = params[:file].original_filename
+      @logfile_date = Date.parse(@logfile_name.match(/^\w+.\w+-(.*)/)[1]).to_date.strftime('%b %d %Y')
+      
+      # analyze file data
       logfile_path = params[:file].path
       File.foreach(logfile_path, headers: false) do |row|
         # split each row to whitespace
         @logdata = row.to_s.split
         # merge date values
-        @install_date = @logdata[0] + " " + @logdata[1] + " " + @logdata[2]
-        # strip the ":" from the end of the status
+        @install_date = DateTime.parse(@logdata[0] + " " + @logdata[1] + " " + @logdata[2]).to_datetime.strftime('%b %d %H:%M:%S')
         @status = @logdata[3].sub(/\:/, '')
         # slice the package name
         regex = /^[\d:]*((?:\w+[\w\d]*-)+)(\d+)\.?([\d\.]*)(?:-(\d+)\.(\w+)\.?(\w+)?)*/
