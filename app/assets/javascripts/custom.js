@@ -6,10 +6,10 @@ var ready = function () {
     orientation: 'left'
   });
   
-  $("#file").filestyle({buttonname: "btn-primary"});
   
 };
 
 // Load jQuery data 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+$(document).on('page:change', ready);
