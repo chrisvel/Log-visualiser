@@ -21,7 +21,7 @@ class HomeController < ApplicationController
         @logfile_date = Date.today.strftime('%b %d %Y')
       end
       
-      # create the logfile
+      # create the logfile before iterating file entries
       logfile = LogFile.create!(:init_date => @logfile_date, :user_id => current_user.id)
       
       # analyze file data
@@ -47,7 +47,6 @@ class HomeController < ApplicationController
       
           if @package_info[3] 
             @minor_rel = @package_info[3] 
-            #@minor_rel += "-" + @package_info[4] if @package_info[4]
           else
             @minor_rel = "-"
           end
@@ -60,7 +59,7 @@ class HomeController < ApplicationController
 
           @lines << [@install_date, @status, @package_name, @major_rel, @minor_rel, @platform]
           
-          # then save the log_events data
+          # save the log_events data
           logfile.log_events.create!(
               :install_date => @install_date,
               :status => @status,
