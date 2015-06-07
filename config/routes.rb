@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'logfiles/new'
+
+  get 'logfiles/create'
+
   resources :logevents
   get 'search' => 'logevents#search'
   post 'search_results' => 'logevents#search_results'

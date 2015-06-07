@@ -4,6 +4,8 @@ class LogEvent < ActiveRecord::Base
   
   # accossiations
   belongs_to :user,   :foreign_key => 'user_id'
+  belongs_to :log_file,   :foreign_key => 'logfile_id'
+  accepts_nested_attributes_for :log_file, allow_destroy: true
   
   # validations
   

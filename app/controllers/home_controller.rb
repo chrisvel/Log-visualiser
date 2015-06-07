@@ -18,7 +18,7 @@ class HomeController < ApplicationController
       if @logfile_name.match(/^\w+.\w+-(.*)/)
         @logfile_date = Date.parse(@logfile_name.match(/^\w+.\w+-(.*)/)[1]).to_date.strftime('%b %d %Y')
       else 
-        @logfile_date = ""
+        @logfile_date = Date.today.strftime('%b %d %Y')
       end
       
       # analyze file data
@@ -57,21 +57,25 @@ class HomeController < ApplicationController
 
           @lines << [@install_date, @status, @package_name, @major_rel, @minor_rel, @platform]
           
-          logevent = Hash.new
-          
-          logevent = {
-            :install_date => @install_date,
-            :status => @status,
-            :package_name => @package_name,
-            :major_rel => @major_rel,
-            :minor_rel => @minor_rel,
-            :elxxx => "",
-            :platform => @platform,
-            :user_id => current_user.id
+          # then save the logevent data
+          logfile = Hash.new
+          logfile = {
+            :init_date => @logfile_date,
+            :user_id => current_user.id,
+            :log_events => {
+              :install_date => @install_date,
+              :status => @status,
+              :package_name => @package_name,
+              :major_rel => @major_rel,
+              :minor_rel => @minor_rel,
+              :elxxx => "",
+              :platform => @platform,
+              :user_id => current_user.id
+              }
             }
           
-          LogEvent.new
-          LogEvent.create! logevent
+          LogFile.create! logfile
+          
         end
       end
     end
