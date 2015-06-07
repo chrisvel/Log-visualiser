@@ -39,9 +39,6 @@ class LogeventsController < ApplicationController
   end
 
   def visualise
-  end
-
-  def visualise_chart
     if params[:from_date].present? && params[:to_date].present?
       from_date = Date.parse("#{params[:from_date]}")
       end_date = Date.parse("#{params[:to_date]}")
@@ -51,9 +48,9 @@ class LogeventsController < ApplicationController
     else
       @logevents = LogEvent.all.order(package_name: :asc)
     end
-  @logevents_updated = @logevents.where(status: 0).count
-  @logevents_installed = @logevents.where(status: 1).count
-  @logevents_removed = @logevents.where(status: 2).count
+    @logevents_updated = @logevents.where(status: 0).count
+    @logevents_installed = @logevents.where(status: 1).count
+    @logevents_removed = @logevents.where(status: 2).count
   end
   
   private

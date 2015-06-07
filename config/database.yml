@@ -27,4 +27,8 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: logvs_db
+  username: logvs_admin  
+  password: Password1!
+  host: localhost
+  port: 3306

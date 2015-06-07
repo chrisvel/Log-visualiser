@@ -15,7 +15,7 @@
       <% @logevents_datetime.each do |key, value| %>
         <h3><%= key.strftime('%b %d %H:%M:%S') %></h3>
           <div class="table-responsive">
-            <table class="table table-bordered table-responsive">
+            <table class="table table-bordered">
               <thead>
                 <th>Status</th>
                 <th>Package name</th>
@@ -42,32 +42,35 @@
     <div role="tabpanel" class="tab-pane" id="status">
       <% @logevents_status.each do |key, value| %>
         <h3><%= key %></h3>
-          <table class="table table-bordered">
-            <thead>
-              <th>Datetime</th>
-              <th>Package name</th>
-              <th>Major release</th>
-              <th>Minor release</th>
-              <th>Platform</th>
-            </thead>
-            <tbody>
-              <% value.each do |logevent| %>
-                <tr>
-                  <td><%= logevent.install_date %> </td>
-                  <td><%= logevent.package_name %> </td>
-                  <td><%= logevent.major_rel %> </td>
-                  <td><%= logevent.minor_rel %> </td>
-                  <td><%= logevent.platform %> </td>
-                 </tr> 
-              <% end %>
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <th>Datetime</th>
+                <th>Package name</th>
+                <th>Major release</th>
+                <th>Minor release</th>
+                <th>Platform</th>
+              </thead>
+              <tbody>
+                <% value.each do |logevent| %>
+                  <tr>
+                    <td><%= logevent.install_date %> </td>
+                    <td><%= logevent.package_name %> </td>
+                    <td><%= logevent.major_rel %> </td>
+                    <td><%= logevent.minor_rel %> </td>
+                    <td><%= logevent.platform %> </td>
+                   </tr> 
+                <% end %>
+              </tbody>
+            </table>
+          </div>
           <br /> <br />
         <% end %>
     </div>
     <div role="tabpanel" class="tab-pane" id="package_name">
       <% @logevents_pname.each do |key, value| %>
         <h3><%= key %></h3>
+        <div class="table-responsive">
           <table class="table table-bordered">
             <thead>
               <th>Datetime</th>
@@ -88,7 +91,8 @@
               <% end %>
             </tbody>
           </table>
-          <br /> <br />
+        </div>
+        <br /> <br />
         <% end %>
     </div>
   </div>

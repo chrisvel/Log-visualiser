@@ -1,16 +1,35 @@
-<h1>Search results</h1>
-
-<%= form_tag visualise_chart_path, class: 'form-inline', multipart: true do %>
-  <div class="form-group">
-    <%= text_field_tag :from_date, nil, class: 'datepicker form-control', type: 'text'%>
-    
-    <%= text_field_tag :to_date, nil, class: 'datepicker form-control'%>
-  </div>
-<%= submit_tag "Search", class: 'btn btn-default' %>
-
-  <%# f.text_field :date_opened,:value => @ticket.id ? f.object.date_opened.strftime('%Y-%m-%d %H:%m') :DateTime.now.strftime('%Y-%m-%d %H:%m'), 
-    # :class => "datetimepicker datetime-text" 
-  %>
-<% end %>
-
+<h1>Visualize data</h1>
 <hr />
+
+<div class="col-lg-12">
+  <div style="max-width: 600px" class="center-block">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div id="piechart">
+          <%= render "visualise_chart" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-12">
+  <div style="max-width: 600px" class="center-block">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Please select from and to dates <br/>
+      </div>
+      <div class="panel-body">
+        <%= form_tag visualise_path, class: 'form-inline',remote: true, :method => 'get', multipart: true do %>
+          <div class="form-group">
+            <%= text_field_tag :from_date, nil, class: 'datepicker form-control', type: 'text', placeholder: "From date"%>
+          </div>
+          <div class="form-group">
+            <%= text_field_tag :to_date, nil, class: 'datepicker form-control', placeholder: "To date"%>
+          </div>
+        <%= submit_tag "Update chart", class: 'btn btn-default' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

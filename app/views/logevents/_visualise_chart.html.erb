@@ -1,0 +1,68 @@
+<script>
+  var ready = function () {
+  
+  //
+  // Setup Tickets per day of week chart
+  //
+  var data = [
+    {
+        value: $('#MyPieChart').data('removed'),
+        color:"#F7464A",
+        highlight: "#FF5A5E",
+        label: "Removed"
+    },
+    {
+        value: $('#MyPieChart').data('installed'),
+        color: "#46BFBD",
+        highlight: "#5AD3D1",
+        label: "Installed"
+    },
+    {
+        value: $('#MyPieChart').data('updated'),
+        color: "#FDB45C",
+        highlight: "#FFC870",
+        label: "Updated"
+    }
+  ]
+  
+  if ($('#MyPieChart')) {
+       myNewChart = new Chart($("#MyPieChart").get(0).getContext("2d")).Pie(data, {
+          //Number - Amount of animation steps
+          animationSteps : 200,
+          responsive : true,
+          maintainAspectRatio: true
+       });
+    }
+  
+};
+
+// Load jQuery data 
+$(document).ready(ready);
+$(document).on('page:load', ready);
+
+</script>
+
+<div class="panel panel-default" style="width: max-width:360px; float:right;">
+  <div class="panel-body">
+    <div class="label distleft" style="background-color: #FDB45C">
+      Updated:
+    </div> 
+    <%= @logevents_updated %> 
+    <div class="label distleft" style="background-color: #46BFBD">
+      Installed:
+    </div>  
+    <%= @logevents_installed %> 
+    <div class="label distleft" style="background-color: #F7464A">
+      Removed:
+    </div> 
+    <%= @logevents_removed %> 
+  </div>
+</div>
+
+<%= content_tag :canvas, nil,  id: "MyPieChart", width: 300, height: 300,
+      data: { 
+          installed: @logevents_installed,
+          updated: @logevents_updated,
+          removed: @logevents_removed 
+          } %>
+
