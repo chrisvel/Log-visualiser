@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require Chart
+//= require libs/bootstrap-lifestyle
 //= require bootstrap-datepicker
 //= require_tree .
 
