@@ -1,0 +1,25 @@
+<h1>Visualise results</h1>
+
+<%= form_tag visualise_chart_path, multipart: true do %>
+  <%= text_field_tag :from_date, nil, class: 'datepicker form-control', type: 'text'%>
+  <%= text_field_tag :to_date, nil, class: 'datepicker form-control'%>
+  <%= submit_tag "Search" %>
+
+  <%# f.text_field :date_opened,:value => @ticket.id ? f.object.date_opened.strftime('%Y-%m-%d %H:%m') :DateTime.now.strftime('%Y-%m-%d %H:%m'), 
+    # :class => "datetimepicker datetime-text" 
+  %>
+<% end %>
+
+
+<hr />
+Updated: <%= @logevents_updated %>
+Installed: <%= @logevents_installed %>
+Removed: <%= @logevents_removed %>
+
+<%= content_tag :canvas, nil,  id: "MyPieChart", width: 400, height: 400,
+      data: { 
+          installed: @logevents_installed,
+          updated: @logevents_updated,
+          removed: @logevents_removed 
+          } %>
+

@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :logevents
   get 'search' => 'logevents#search'
   post 'search_results' => 'logevents#search_results'
+  
+  get 'visualise' => 'logevents#visualise'
+  post 'visualise_chart' => 'logevents#visualise_chart'
 
   post 'import_data' => 'home#import_data'
 

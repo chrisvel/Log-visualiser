@@ -1,0 +1,16 @@
+<h1>Search results</h1>
+
+<%= form_tag visualise_chart_path, class: 'form-inline', multipart: true do %>
+  <div class="form-group">
+    <%= text_field_tag :from_date, nil, class: 'datepicker form-control', type: 'text'%>
+    
+    <%= text_field_tag :to_date, nil, class: 'datepicker form-control'%>
+  </div>
+<%= submit_tag "Search", class: 'btn btn-default' %>
+
+  <%# f.text_field :date_opened,:value => @ticket.id ? f.object.date_opened.strftime('%Y-%m-%d %H:%m') :DateTime.now.strftime('%Y-%m-%d %H:%m'), 
+    # :class => "datetimepicker datetime-text" 
+  %>
+<% end %>
+
+<hr />
