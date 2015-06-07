@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20150607092601) do
     t.integer  "user_id",      limit: 4,   null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.integer  "logfile_id",   limit: 4
+    t.integer  "log_file_id",  limit: 4
   end
 
-  add_index "log_events", ["logfile_id"], name: "index_log_events_on_logfile_id", using: :btree
+  add_index "log_events", ["log_file_id"], name: "index_log_events_on_log_file_id", using: :btree
   add_index "log_events", ["user_id", "package_name", "install_date"], name: "index_log_events_on_user_id_and_package_name_and_install_date", using: :btree
 
   create_table "log_files", force: :cascade do |t|

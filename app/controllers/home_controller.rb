@@ -21,6 +21,9 @@ class HomeController < ApplicationController
         @logfile_date = Date.today.strftime('%b %d %Y')
       end
       
+      # create the logfile
+      logfile = LogFile.create!(:init_date => @logfile_date, :user_id => current_user.id)
+      
       # analyze file data
       logfile_path = params[:file].path
       File.foreach(logfile_path, headers: false) do |row|
@@ -56,9 +59,6 @@ class HomeController < ApplicationController
           end
 
           @lines << [@install_date, @status, @package_name, @major_rel, @minor_rel, @platform]
-          
-          # create the logfile
-          logfile = LogFile.create!(:init_date => @logfile_date, :user_id => current_user.id)
           
           # then save the log_events data
           logfile.log_events.create!(
