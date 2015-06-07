@@ -18,17 +18,7 @@ class LogfilesController < ApplicationController
     def logfile_params
       params.require(:logfile).permit(
         :init_date,
-        :user_id,
-        :log_events => [
-            :user_id,
-            :install_date,
-            :status,
-            :package_name,
-            :major_rel,
-            :minor_rel,
-            :elxxx,
-            :platform
-        ]
+        :user_id
       )
     end
   

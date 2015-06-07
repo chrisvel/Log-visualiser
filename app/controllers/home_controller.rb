@@ -57,12 +57,11 @@ class HomeController < ApplicationController
 
           @lines << [@install_date, @status, @package_name, @major_rel, @minor_rel, @platform]
           
-          # then save the logevent data
-          logfile = Hash.new
-          logfile = {
-            :init_date => @logfile_date,
-            :user_id => current_user.id,
-            :log_events => {
+          # create the logfile
+          logfile = LogFile.create!(:init_date => @logfile_date, :user_id => current_user.id)
+          
+          # then save the log_events data
+          logfile.log_events.create!(
               :install_date => @install_date,
               :status => @status,
               :package_name => @package_name,
@@ -71,10 +70,7 @@ class HomeController < ApplicationController
               :elxxx => "",
               :platform => @platform,
               :user_id => current_user.id
-              }
-            }
-          
-          LogFile.create! logfile
+              )
           
         end
       end

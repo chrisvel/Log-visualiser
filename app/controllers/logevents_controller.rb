@@ -67,10 +67,7 @@ class LogeventsController < ApplicationController
         :minor_rel,
         :elxxx,
         :platform,
-        :log_file => [
-          :init_date,
-          :user_id
-        ],
+        :logfile_id
       )
     end
   
