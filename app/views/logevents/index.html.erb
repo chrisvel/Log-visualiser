@@ -13,7 +13,7 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="datentime">
       <% @logevents_datetime.each do |key, value| %>
-        <h3><%= key.strftime('%b %d %H:%M:%S') %></h3>
+        <h3><%= key.strftime('%b %d %Y %H:%M:%S') %></h3>
           <div class="table-responsive">
             <table class="table table-bordered">
               <thead>
