@@ -15,6 +15,7 @@ gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
 
 # additional gems necessary for the project
 gem 'bootstrap-sass', '~> 3.3.4.1'
+gem 'bootswatch-rails'
 gem 'devise', '~> 3.5.1'
 gem 'mysql2', '~> 0.3.18'
 gem 'momentjs-rails', '~> 2.10.2'

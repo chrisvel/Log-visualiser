@@ -1,0 +1,11 @@
+<%= form_tag search_results_path, class: "navbar-form navbar-left", role: "search", multipart: true do %>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+      <%= text_field_tag :search_text, nil, class: "form-control", placeholder: "Enter package name", required: true %>
+      <span class="input-group-btn">
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      </span>
+    </div>
+  </div>
+<% end %>

@@ -1,19 +1,25 @@
-<h1>Log events visualization</h1>
-<hr />
+<div class="jumbotron">
+  <h3>Log events visualization</h3>
+  <p>Please upload new data to te database or choose an action from the top menu.</p>
+</div>
 
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    Please upload some data to the database: <br/>
-  </div>
-  <div class="panel-body">
-    <%= form_tag import_data_path, class: "form", multipart: true do %>
-      <div class="form-group">
-        <%= file_field_tag :file, class: "form-control" %>
+<div class="col-lg-12">
+  <div style="max-width: 600px" class="center-block">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Please upload some data to the database: <br/>
       </div>
-      <div class="form-group">
-        <%= submit_tag "Load data", class: "btn btn-default" %>
+      <div class="panel-body">
+        <%= form_tag import_data_path, class: "form", multipart: true do %>
+          <div class="form-group">
+            <%= file_field_tag :file, class: "form-control", required: true %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag "Load data", class: "btn btn-default" %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
 

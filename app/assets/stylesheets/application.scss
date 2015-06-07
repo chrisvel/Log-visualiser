@@ -1,5 +1,15 @@
+//Import bootstrap-sprockets
 @import "bootstrap-sprockets";
+
+// Import cerulean variables
+@import "bootswatch/cosmo/variables";
+
+// Then bootstrap itself
 @import "bootstrap";
+
+// And finally bootswatch style itself
+@import "bootswatch/cosmo/bootswatch";
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

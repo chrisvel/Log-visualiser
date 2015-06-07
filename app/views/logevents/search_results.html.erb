@@ -1,10 +1,4 @@
 <h1>Search results</h1>
-
-<%= form_tag search_results_path, multipart: true do %>
-  <%= text_field_tag :search_text %>
-  <%= submit_tag "Search" %>
-<% end %>
-
 <hr />
 <% @logevents_pname.each do |key, value| %>
 <h3><%= key %></h3>

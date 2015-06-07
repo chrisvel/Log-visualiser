@@ -27,11 +27,14 @@ class HomeController < ApplicationController
       # analyze file data
       logfile_path = params[:file].path
       File.foreach(logfile_path, headers: false) do |row|
+        
         # split each row to whitespace
         @logdata = row.to_s.split
+        
         # merge date values
         @install_date = DateTime.parse(@logdata[0] + " " + @logdata[1] + " " + @logdata[2]).to_datetime.strftime('%b %d %H:%M:%S')
         @status = @logdata[3].sub(/\:/, '')
+        
         # slice the package name
         regex = /^[\d:]*((?:[a-z]+\w*-)+)(?:([\d\.]+)\.((?:\d+-\d+)(?:.*))\.(el[\w.]+)\.(.*)|(\d+)-(\d+)\.?(el[\w.]+)?\.(.*))/
         if @logdata[4].to_s.match(regex)

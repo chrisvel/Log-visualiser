@@ -1,6 +1,4 @@
-Your uploaded data at <b>TBD</b><br /><br />
-
-<h4>Categorize</h4>
+<h4>Categorize data by :</h4>
 <div role="tabpanel">
 
   <!-- Nav tabs -->
@@ -16,26 +14,28 @@ Your uploaded data at <b>TBD</b><br /><br />
     <div role="tabpanel" class="tab-pane active" id="datentime">
       <% @logevents_datetime.each do |key, value| %>
         <h3><%= key.strftime('%b %d %H:%M:%S') %></h3>
-          <table class="table table-bordered">
-            <thead>
-              <th>Status</th>
-              <th>Package name</th>
-              <th>Major release</th>
-              <th>Minor release</th>
-              <th>Platform</th>
-            </thead>
-            <tbody>
-              <% value.each do |logevent| %>
-                <tr>
-                  <td><%= logevent.status %> </td>
-                  <td><%= logevent.package_name %> </td>
-                  <td><%= logevent.major_rel %> </td>
-                  <td><%= logevent.minor_rel %> </td>
-                  <td><%= logevent.platform %> </td>
-                 </tr> 
-              <% end %>
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="table table-bordered table-responsive">
+              <thead>
+                <th>Status</th>
+                <th>Package name</th>
+                <th>Major release</th>
+                <th>Minor release</th>
+                <th>Platform</th>
+              </thead>
+              <tbody>
+                <% value.each do |logevent| %>
+                  <tr>
+                    <td><%= logevent.status %> </td>
+                    <td><%= logevent.package_name %> </td>
+                    <td><%= logevent.major_rel %> </td>
+                    <td><%= logevent.minor_rel %> </td>
+                    <td><%= logevent.platform %> </td>
+                   </tr> 
+                <% end %>
+              </tbody>
+            </table>
+          </div>
           <br /> <br />
         <% end %>
     </div>
