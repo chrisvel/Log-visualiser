@@ -24,13 +24,13 @@
             <ul class="dropdown-menu" role="menu">
               <% if signed_in? %>
                 <li class="active">
-                  <%= link_to "Home", root_path %>
+                  <%= link_to "Import data", root_path %>
                 </li>
                 <li>
                   <%= link_to "View data", logevents_path %>
                 </li>
                 <li>
-                  <%= link_to "Visualise", visualise_path %>
+                  <%= link_to "Visualise data", visualise_path %>
                 </li>
                 <li>
                   <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
