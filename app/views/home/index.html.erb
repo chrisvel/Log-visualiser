@@ -1,7 +1,20 @@
-<h1>Home#index</h1>
+<h1>Log events visualization</h1>
+<hr />
 
-<%= form_tag import_data_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import file" %>
-<% end %>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Please upload some data to the database: <br/>
+  </div>
+  <div class="panel-body">
+    <%= form_tag import_data_path, class: "form", multipart: true do %>
+      <div class="form-group">
+        <%= file_field_tag :file, class: "form-control" %>
+        <br />
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Load data", class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
