@@ -17,5 +17,5 @@
 /tmp
 
 #Ignore db config
-/config/database.yml.mine
+/config/database.yml
 
