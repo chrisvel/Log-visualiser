@@ -1,3 +1,9 @@
+// Load jQuery data 
+
+$(document).on('page:load', ready);
+$(document).on('page:change', ready);
+$(document).ready(ready);
+
 var ready = function () {
 
   // Datepicker 
@@ -5,11 +11,4 @@ var ready = function () {
     format: 'M dd yyyy',
     orientation: 'left'
   });
-  
-  
 };
-
-// Load jQuery data 
-$(document).ready(ready);
-$(document).on('page:load', ready);
-$(document).on('page:change', ready);

@@ -1,3 +1,8 @@
+// Load jQuery data 
+$(document).ready(ready);
+$(document).on('page:load', ready);
+$(document).on('page:change', ready);
+
 var ready = function () {
   
   //
@@ -30,7 +35,3 @@ var ready = function () {
   
 };
 
-// Load jQuery data 
-$(document).ready(ready);
-$(document).on('page:load', ready);
-$(document).on('page:change', ready);
