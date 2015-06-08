@@ -18,8 +18,7 @@ gem 'mysql2', '~> 0.3.18'
 gem 'momentjs-rails', '~> 2.10.2'
 gem 'sprockets-rails', '~> 2.3.1'
 gem 'chart-js-rails'
-gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
-                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem 'byebug'
