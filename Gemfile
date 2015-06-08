@@ -20,6 +20,7 @@ gem 'sprockets-rails', '~> 2.3.1'
 gem 'chart-js-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'passenger', '~> 5.0.9'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug'
