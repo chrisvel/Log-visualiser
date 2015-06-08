@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
   get 'logfiles/new'
-
   get 'logfiles/create'
 
   resources :logevents
